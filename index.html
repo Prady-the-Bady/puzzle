@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<title>Unscramble</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
+  <meta charset="utf-8">
+  <title>Unscramble</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
   :root { --ink:#222; --muted:#666; --accent:#0a7; --bg:#fafafa; }
   body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background: var(--bg); color: var(--ink); }
   .wrap { max-width: 860px; margin: 32px auto; padding: 16px; }
@@ -44,12 +44,12 @@
   .ok { color: #0a7; }
   .err { color: #c33; }
   .hint { text-align: center; color: var(--muted); font-size: 14px; margin-top: 6px; }
-</style>
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="timer" id="timerBox">Refreshing in 20s…</div>
     <h1>Unscramble the Phrase</h1>
+    <div class="timer" id="timerBox">Refreshing in 40s…</div>
     <p class="sub">Click the tiles to build the phrase. Keep the spaces and the casing!</p>
     <div class="panel">
       <div class="scrambled" id="scrambledPhrase" aria-label="Scrambled phrase shown"></div>
@@ -64,7 +64,8 @@
       <div class="hint">ask the name of the president and interact with him/her</div>
     </div>
   </div>
-<script>
+
+  <script>
   const TARGET = "lOng liVe aakAr mathUr SiR";
 
   function shuffleArray(arr) {
@@ -89,7 +90,7 @@
   }
 
   // Countdown timer and auto refresh
-  let timeLeft = 20;
+  let timeLeft = 40;
   function updateTimer() {
     document.getElementById("timerBox").textContent = "Refreshing in " + timeLeft + "s…";
     if (timeLeft <= 0) {
@@ -171,6 +172,7 @@
   function submit() {
     const guess = currentStr();
     if (guess === TARGET) {
+      window.alert("horary you guessed the sentence, type the answer");
       statusEl.textContent = "✅ Well done! Correct: " + TARGET;
       statusEl.className = "status ok";
     } else {
@@ -182,7 +184,6 @@
   undoBtn.addEventListener("click", undo);
   resetBtn.addEventListener("click", resetAll);
   submitBtn.addEventListener("click", submit);
-
-</script>
+  </script>
 </body>
 </html>
